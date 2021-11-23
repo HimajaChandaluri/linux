@@ -11,6 +11,10 @@ Created the VM on top of the ubuntu system. Built a test file to test the kernel
 
 ### Chandra Lekha Mamidi
 
+I was responsible for implementing the two leaf node functionalities of the code. In this process i updated the cpuid.c and vmx.c files of the kernel.
+I used variables `exit_count` and `time_spent` to keep track of number of exits and total time spent in exits.
+Replaced the updates files in the kernel code and rebuilt the code.
+
 ## Steps followed
 
 1. Forked the torvalds/linux tree
