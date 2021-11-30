@@ -75,3 +75,10 @@ Updated the kernal code in `cpuid.c` and `vmx.c` files and executed the followin
 ![image](https://user-images.githubusercontent.com/67281829/143992057-d3782234-a978-40fb-ae37-53f041bdb27c.png)
 
 ![image](https://user-images.githubusercontent.com/67281829/143992079-89886c33-10df-418d-a723-0a03e12e082a.png)
+
+### Answers 
+
+1) Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are there 
+more exits performed during certain VM operations? Approximately how many exits does a full VM 
+boot entail?
+
