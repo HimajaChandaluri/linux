@@ -66,7 +66,6 @@
 #include "vmx.h"
 #include "x86.h"
 
-// Ass-2 changes
 #include <asm/atomic.h>
 #include <asm/atomic64_64.h>
 #include <asm/msr.h>
@@ -77,9 +76,136 @@
 MODULE_AUTHOR("Qumranet");
 MODULE_LICENSE("GPL");
 
-// Ass-2 changes
+/* Assig-2 Changes */
 extern atomic_t exit_cnt;
 extern atomic64_t time_spent;
+
+/* Assig-3 Changes */
+
+extern atomic_t EXIT_REASON_EXCEPTION_NMI_VAR;
+extern atomic_t EXIT_REASON_EXTERNAL_INTERRUPT_VAR;
+extern atomic_t EXIT_REASON_TRIPLE_FAULT_VAR;     
+extern atomic_t EXIT_REASON_INIT_SIGNAL_VAR;	  
+extern atomic_t EXIT_REASON_SIPI_SIGNAL_VAR;      
+extern atomic_t EXIT_REASON_INTERRUPT_WINDOW_VAR; 
+extern atomic_t EXIT_REASON_NMI_WINDOW_VAR;       
+extern atomic_t EXIT_REASON_TASK_SWITCH_VAR;      
+extern atomic_t EXIT_REASON_CPUID_VAR;            
+extern atomic_t EXIT_REASON_HLT_VAR;              
+extern atomic_t EXIT_REASON_INVD_VAR;             
+extern atomic_t EXIT_REASON_INVLPG_VAR;           
+extern atomic_t EXIT_REASON_RDPMC_VAR;            
+extern atomic_t EXIT_REASON_RDTSC_VAR;            
+extern atomic_t EXIT_REASON_VMCALL_VAR;           
+extern atomic_t EXIT_REASON_VMCLEAR_VAR;          
+extern atomic_t EXIT_REASON_VMLAUNCH_VAR;         
+extern atomic_t EXIT_REASON_VMPTRLD_VAR;          
+extern atomic_t EXIT_REASON_VMPTRST_VAR;          
+extern atomic_t EXIT_REASON_VMREAD_VAR;           
+extern atomic_t EXIT_REASON_VMRESUME_VAR;         
+extern atomic_t EXIT_REASON_VMWRITE_VAR;          
+extern atomic_t EXIT_REASON_VMOFF_VAR;            
+extern atomic_t EXIT_REASON_VMON_VAR;             
+extern atomic_t EXIT_REASON_CR_ACCESS_VAR;        
+extern atomic_t EXIT_REASON_DR_ACCESS_VAR;        
+extern atomic_t EXIT_REASON_IO_INSTRUCTION_VAR;   
+extern atomic_t EXIT_REASON_MSR_READ_VAR;         
+extern atomic_t EXIT_REASON_MSR_WRITE_VAR;        
+extern atomic_t EXIT_REASON_INVALID_STATE_VAR;    
+extern atomic_t EXIT_REASON_MSR_LOAD_FAIL_VAR;    
+extern atomic_t EXIT_REASON_MWAIT_INSTRUCTION_VAR;
+extern atomic_t EXIT_REASON_MONITOR_TRAP_FLAG_VAR;
+extern atomic_t EXIT_REASON_MONITOR_INSTRUCTION_VAR;
+extern atomic_t EXIT_REASON_PAUSE_INSTRUCTION_VAR;
+extern atomic_t EXIT_REASON_MCE_DURING_VMENTRY_VAR;
+extern atomic_t EXIT_REASON_TPR_BELOW_THRESHOLD_VAR;
+extern atomic_t EXIT_REASON_APIC_ACCESS_VAR;
+extern atomic_t EXIT_REASON_EOI_INDUCED_VAR;      
+extern atomic_t EXIT_REASON_GDTR_IDTR_VAR;        
+extern atomic_t EXIT_REASON_LDTR_TR_VAR;          
+extern atomic_t EXIT_REASON_EPT_VIOLATION_VAR;    
+extern atomic_t EXIT_REASON_EPT_MISCONFIG_VAR;    
+extern atomic_t EXIT_REASON_INVEPT_VAR;           
+extern atomic_t EXIT_REASON_RDTSCP_VAR;           
+extern atomic_t EXIT_REASON_PREEMPTION_TIMER_VAR; 
+extern atomic_t EXIT_REASON_INVVPID_VAR;          
+extern atomic_t EXIT_REASON_WBINVD_VAR;           
+extern atomic_t EXIT_REASON_XSETBV_VAR;           
+extern atomic_t EXIT_REASON_APIC_WRITE_VAR;       
+extern atomic_t EXIT_REASON_RDRAND_VAR;           
+extern atomic_t EXIT_REASON_INVPCID_VAR;          
+extern atomic_t EXIT_REASON_VMFUNC_VAR;           
+extern atomic_t EXIT_REASON_ENCLS_VAR;            
+extern atomic_t EXIT_REASON_RDSEED_VAR;           
+extern atomic_t EXIT_REASON_PML_FULL_VAR;         
+extern atomic_t EXIT_REASON_XSAVES_VAR;           
+extern atomic_t EXIT_REASON_XRSTORS_VAR;          
+extern atomic_t EXIT_REASON_UMWAIT_VAR;           
+extern atomic_t EXIT_REASON_TPAUSE_VAR;
+
+
+extern atomic64_t EXCEPTION_NMI_TIMER;
+extern atomic64_t EXTERNAL_INTERRUPT_TIMER; 
+extern atomic64_t TRIPLE_FAULT_TIMER;
+extern atomic64_t INIT_SIGNAL_TIMER;
+extern atomic64_t SIPI_SIGNAL_TIMER;
+extern atomic64_t INTERRUPT_WINDOW_TIMER; 
+extern atomic64_t NMI_WINDOW_TIMER;      
+extern atomic64_t TASK_SWITCH_TIMER;     
+extern atomic64_t REASON_CPUID_TIMER;
+extern atomic64_t REASON_HLT_TIMER;              
+extern atomic64_t REASON_INVD_TIMER;             
+extern atomic64_t REASON_INVLPG_TIMER;         
+extern atomic64_t REASON_RDPMC_TIMER;         
+extern atomic64_t REASON_RDTSC_TIMER;          
+extern atomic64_t REASON_VMCALL_TIMER;        
+extern atomic64_t REASON_VMCLEAR_TIMER;     
+extern atomic64_t REASON_VMLAUNCH_TIMER;   
+extern atomic64_t REASON_VMPTRLD_TIMER;      
+extern atomic64_t REASON_VMPTRST_TIMER;     
+extern atomic64_t REASON_VMREAD_TIMER;       
+extern atomic64_t REASON_VMRESUME_TIMER;  
+extern atomic64_t REASON_VMWRITE_TIMER;      
+extern atomic64_t REASON_VMOFF_TIMER;          
+extern atomic64_t REASON_VMON_TIMER;           
+extern atomic64_t REASON_CR_ACCESS_TIMER;        
+extern atomic64_t REASON_DR_ACCESS_TIMER;        
+extern atomic64_t REASON_IO_INSTRUCTION_TIMER; 
+extern atomic64_t REASON_MSR_READ_TIMER;         
+extern atomic64_t REASON_MSR_WRITE_TIMER;        
+extern atomic64_t REASON_INVALID_STATE_TIMER;   
+extern atomic64_t REASON_MSR_LOAD_FAIL_TIMER; 
+extern atomic64_t REASON_MWAIT_INSTRUCTION_TIMER;
+extern atomic64_t REASON_MONITOR_TRAP_FLAG_TIMER;
+extern atomic64_t REASON_MONITOR_INSTRUCTION_TIMER;
+extern atomic64_t REASON_PAUSE_INSTRUCTION_TIMER;
+extern atomic64_t REASON_MCE_DURING_VMENTRY_TIMER;
+extern atomic64_t REASON_TPR_BELOW_THRESHOLD_TIMER;
+extern atomic64_t REASON_APIC_ACCESS_TIMER;
+extern atomic64_t REASON_EOI_INDUCED_TIMER;
+extern atomic64_t REASON_GDTR_IDTR_TIMER;        
+extern atomic64_t REASON_LDTR_TR_TIMER;
+extern atomic64_t REASON_EPT_VIOLATION_TIMER;
+extern atomic64_t REASON_EPT_MISCONFIG_TIMER;
+extern atomic64_t REASON_INVEPT_TIMER;
+extern atomic64_t REASON_RDTSCP_TIMER;
+extern atomic64_t REASON_PREEMPTION_TIMER_TIMER;
+extern atomic64_t REASON_INVVPID_TIMER;       
+extern atomic64_t REASON_WBINVD_TIMER;       
+extern atomic64_t REASON_XSETBV_TIMER;       
+extern atomic64_t REASON_APIC_WRITE_TIMER;
+extern atomic64_t REASON_RDRAND_TIMER;       
+extern atomic64_t REASON_INVPCID_TIMER;       
+extern atomic64_t REASON_VMFUNC_TIMER;       
+extern atomic64_t REASON_ENCLS_TIMER;          
+extern atomic64_t REASON_RDSEED_TIMER;       
+extern atomic64_t REASON_PML_FULL_TIMER;    
+extern atomic64_t REASON_XSAVES_TIMER;       
+extern atomic64_t REASON_XRSTORS_TIMER;     
+extern atomic64_t REASON_UMWAIT_TIMER;       
+extern atomic64_t REASON_TPAUSE_TIMER;
+
+
 
 #ifdef MODULE
 static const struct x86_cpu_id vmx_cpu_id[] = {
@@ -5876,8 +6002,8 @@ void dump_vmcs(struct kvm_vcpu *vcpu)
  * The guest has exited.  See if we can fix it or if we need userspace
  * assistance.
  */
-
-
+ 
+ 
 static int __vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 {
 	uint64_t start = rdtsc();
@@ -5886,11 +6012,10 @@ static int __vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 	u32 vectoring_info = vmx->idt_vectoring_info;
 	u16 exit_handler_index;
 	uint64_t end;
-
+	
 	atomic_inc(&exit_cnt);
-
-	//total_exits++;
-
+	
+	
 	/*
 	 * Flush logged GPAs PML buffer, this will make dirty_bitmap more
 	 * updated. Another good is, in kvm_vm_ioctl_get_dirty_log, before
@@ -6030,10 +6155,258 @@ static int __vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 						kvm_vmx_max_exit_handlers);
 	if (!kvm_vmx_exit_handlers[exit_handler_index])
 		goto unexpected_vmexit;
-
 	end = rdtsc();
 
 	atomic64_fetch_add(end-start, &time_spent);
+	
+	/* Assig-3 Changes */
+	switch(exit_reason.basic)
+	{
+	
+		case 0:
+			atomic_inc(&EXIT_REASON_EXCEPTION_NMI_VAR);
+			atomic64_fetch_add(end-start, &EXCEPTION_NMI_TIMER);
+			break;
+		case 1:
+			atomic_inc(&EXIT_REASON_EXTERNAL_INTERRUPT_VAR);
+			atomic64_fetch_add(end-start, &EXTERNAL_INTERRUPT_TIMER);
+			break;
+		case 2:
+			atomic_inc(&EXIT_REASON_TRIPLE_FAULT_VAR);
+			atomic64_fetch_add(end-start, &TRIPLE_FAULT_TIMER);
+			break;    
+		case 3:
+			atomic_inc(&EXIT_REASON_INIT_SIGNAL_VAR);
+			atomic64_fetch_add(end-start, &INIT_SIGNAL_TIMER);
+			break;		
+		case 4:
+			atomic_inc(&EXIT_REASON_SIPI_SIGNAL_VAR);
+			atomic64_fetch_add(end-start, &SIPI_SIGNAL_TIMER);
+			break;     
+		case 7:
+			atomic_inc(&EXIT_REASON_INTERRUPT_WINDOW_VAR);
+			atomic64_fetch_add(end-start, &INTERRUPT_WINDOW_TIMER);
+			break;
+		case 8:
+			atomic_inc(&EXIT_REASON_NMI_WINDOW_VAR);
+			atomic64_fetch_add(end-start, &NMI_WINDOW_TIMER);
+			break;      
+		case 9:
+			atomic_inc(&EXIT_REASON_TASK_SWITCH_VAR);
+			atomic64_fetch_add(end-start, &TASK_SWITCH_TIMER);
+			break;     
+		case 10:
+			atomic_inc(&EXIT_REASON_CPUID_VAR);
+			atomic64_fetch_add(end-start, &REASON_CPUID_TIMER);
+			break;           
+		case 12:
+			atomic_inc(&EXIT_REASON_HLT_VAR);
+			atomic64_fetch_add(end-start, &REASON_HLT_TIMER);
+			break;             
+		case 13:
+			atomic_inc(&EXIT_REASON_INVD_VAR);
+			atomic64_fetch_add(end-start, &REASON_INVD_TIMER);
+			break;            
+		case 14:
+			atomic_inc(&EXIT_REASON_INVLPG_VAR);
+			atomic64_fetch_add(end-start, &REASON_INVLPG_TIMER);
+			break;          
+		case 15:
+			atomic_inc(&EXIT_REASON_RDPMC_VAR);
+			atomic64_fetch_add(end-start, &REASON_RDPMC_TIMER);
+			break;           
+		case 16:
+			atomic_inc(&EXIT_REASON_RDTSC_VAR);
+			atomic64_fetch_add(end-start, &REASON_RDTSC_TIMER);
+			break;           
+		case 18:
+			atomic_inc(&EXIT_REASON_VMCALL_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMCALL_TIMER);
+			break;          
+		case 19:
+			atomic_inc(&EXIT_REASON_VMCLEAR_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMCLEAR_TIMER);
+			break;         
+		case 20:
+			atomic_inc(&EXIT_REASON_VMLAUNCH_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMLAUNCH_TIMER);
+			break;        
+		case 21:
+			atomic_inc(&EXIT_REASON_VMPTRLD_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMPTRLD_TIMER);
+			break;         
+		case 22:
+			atomic_inc(&EXIT_REASON_VMPTRST_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMPTRST_TIMER);
+			break;         
+		case 23:
+			atomic_inc(&EXIT_REASON_VMREAD_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMREAD_TIMER);
+			break;          
+		case 24:
+			atomic_inc(&EXIT_REASON_VMRESUME_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMRESUME_TIMER);
+			break;        
+		case 25:
+			atomic_inc(&EXIT_REASON_VMWRITE_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMWRITE_TIMER);
+			break;         
+		case 26:
+			atomic_inc(&EXIT_REASON_VMOFF_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMOFF_TIMER);
+			break;           
+		case 27:
+			atomic_inc(&EXIT_REASON_VMON_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMON_TIMER);
+			break;            
+		case 28:
+			atomic_inc(&EXIT_REASON_CR_ACCESS_VAR);
+			atomic64_fetch_add(end-start, &REASON_CR_ACCESS_TIMER);
+			break;       
+		case 29:
+			atomic_inc(&EXIT_REASON_DR_ACCESS_VAR);
+			atomic64_fetch_add(end-start, &REASON_DR_ACCESS_TIMER);
+			break;       
+		case 30:
+			atomic_inc(&EXIT_REASON_IO_INSTRUCTION_VAR);
+			atomic64_fetch_add(end-start, &REASON_IO_INSTRUCTION_TIMER);
+			break;  
+		case 31:
+			atomic_inc(&EXIT_REASON_MSR_READ_VAR);
+			atomic64_fetch_add(end-start, &REASON_MSR_READ_TIMER);
+			break;        
+		case 32:
+			atomic_inc(&EXIT_REASON_MSR_WRITE_VAR);
+			atomic64_fetch_add(end-start, &REASON_MSR_WRITE_TIMER);
+			break;       
+		case 33:
+			atomic_inc(&EXIT_REASON_INVALID_STATE_VAR);
+			atomic64_fetch_add(end-start, &REASON_INVALID_STATE_TIMER);
+			break;   
+		case 34:
+			atomic_inc(&EXIT_REASON_MSR_LOAD_FAIL_VAR);
+			atomic64_fetch_add(end-start, &REASON_MSR_LOAD_FAIL_TIMER);
+			break;   
+		case 36:
+			atomic_inc(&EXIT_REASON_MWAIT_INSTRUCTION_VAR);
+			atomic64_fetch_add(end-start, &REASON_MWAIT_INSTRUCTION_TIMER);
+			break;
+		case 37:
+			atomic_inc(&EXIT_REASON_MONITOR_TRAP_FLAG_VAR);
+			atomic64_fetch_add(end-start, &REASON_MONITOR_TRAP_FLAG_TIMER);
+			break;
+		case 39:
+			atomic_inc(&EXIT_REASON_MONITOR_INSTRUCTION_VAR);
+			atomic64_fetch_add(end-start, &REASON_MONITOR_INSTRUCTION_TIMER);
+			break;
+		case 40:
+			atomic_inc(&EXIT_REASON_PAUSE_INSTRUCTION_VAR);
+			atomic64_fetch_add(end-start, &REASON_PAUSE_INSTRUCTION_TIMER);
+			break;
+		case 41:
+			atomic_inc(&EXIT_REASON_MCE_DURING_VMENTRY_VAR);
+			atomic64_fetch_add(end-start, &REASON_MCE_DURING_VMENTRY_TIMER);
+			break;
+		case 43:
+			atomic_inc(&EXIT_REASON_TPR_BELOW_THRESHOLD_VAR);
+			atomic64_fetch_add(end-start, &REASON_TPR_BELOW_THRESHOLD_TIMER);
+			break;
+		case 44:
+			atomic_inc(&EXIT_REASON_APIC_ACCESS_VAR);
+			atomic64_fetch_add(end-start, &REASON_APIC_ACCESS_TIMER);
+			break;     
+		case 45:
+			atomic_inc(&EXIT_REASON_EOI_INDUCED_VAR);
+			atomic64_fetch_add(end-start, &REASON_EOI_INDUCED_TIMER);
+			break;     
+		case 46:
+			atomic_inc(&EXIT_REASON_GDTR_IDTR_VAR);
+			atomic64_fetch_add(end-start, &REASON_GDTR_IDTR_TIMER);
+			break;       
+		case 47:
+			atomic_inc(&EXIT_REASON_LDTR_TR_VAR);
+			atomic64_fetch_add(end-start, &REASON_LDTR_TR_TIMER);
+			break;         
+		case 48:
+			atomic_inc(&EXIT_REASON_EPT_VIOLATION_VAR);
+			atomic64_fetch_add(end-start, &REASON_EPT_VIOLATION_TIMER);
+			break;   
+		case 49:
+			atomic_inc(&EXIT_REASON_EPT_MISCONFIG_VAR);
+			atomic64_fetch_add(end-start, &REASON_EPT_MISCONFIG_TIMER);
+			break;   
+		case 50:
+			atomic_inc(&EXIT_REASON_INVEPT_VAR);
+			atomic64_fetch_add(end-start, &REASON_INVEPT_TIMER);
+			break;          
+		case 51:
+			atomic_inc(&EXIT_REASON_RDTSCP_VAR);
+			atomic64_fetch_add(end-start, &REASON_RDTSCP_TIMER);
+			break;          
+		case 52:
+			atomic_inc(&EXIT_REASON_PREEMPTION_TIMER_VAR);
+			atomic64_fetch_add(end-start, &REASON_PREEMPTION_TIMER_TIMER);
+			break;
+		case 53:
+			atomic_inc(&EXIT_REASON_INVVPID_VAR);
+			atomic64_fetch_add(end-start, &REASON_INVVPID_TIMER);
+			break;         
+		case 54:
+			atomic_inc(&EXIT_REASON_WBINVD_VAR);
+			atomic64_fetch_add(end-start, &REASON_WBINVD_TIMER);
+			break;          
+		case 55:
+			atomic_inc(&EXIT_REASON_XSETBV_VAR);
+			atomic64_fetch_add(end-start, &REASON_XSETBV_TIMER);
+			break;          
+		case 56:
+			atomic_inc(&EXIT_REASON_APIC_WRITE_VAR);
+			atomic64_fetch_add(end-start, &REASON_APIC_WRITE_TIMER);
+			break;      
+		case 57:
+			atomic_inc(&EXIT_REASON_RDRAND_VAR);
+			atomic64_fetch_add(end-start, &REASON_RDRAND_TIMER);
+			break;          
+		case 58:
+			atomic_inc(&EXIT_REASON_INVPCID_VAR);
+			atomic64_fetch_add(end-start, &REASON_INVPCID_TIMER);
+			break;         
+		case 59:
+			atomic_inc(&EXIT_REASON_VMFUNC_VAR);
+			atomic64_fetch_add(end-start, &REASON_VMFUNC_TIMER);
+			break;          
+		case 60:
+			atomic_inc(&EXIT_REASON_ENCLS_VAR);
+			atomic64_fetch_add(end-start, &REASON_ENCLS_TIMER);
+			break;           
+		case 61:
+			atomic_inc(&EXIT_REASON_RDSEED_VAR);
+			atomic64_fetch_add(end-start, &REASON_RDSEED_TIMER);
+			break;          
+		case 62:
+			atomic_inc(&EXIT_REASON_PML_FULL_VAR);
+			atomic64_fetch_add(end-start, &REASON_PML_FULL_TIMER);
+			break;        
+		case 63:
+			atomic_inc(&EXIT_REASON_XSAVES_VAR);
+			atomic64_fetch_add(end-start, &REASON_XSAVES_TIMER);
+			break;          
+		case 64:
+			atomic_inc(&EXIT_REASON_XRSTORS_VAR);
+			atomic64_fetch_add(end-start, &REASON_XRSTORS_TIMER);
+			break;         
+		case 67:
+			atomic_inc(&EXIT_REASON_UMWAIT_VAR);
+			atomic64_fetch_add(end-start, &REASON_UMWAIT_TIMER);
+			break;          
+		case 68:
+			atomic_inc(&EXIT_REASON_TPAUSE_VAR);
+			atomic64_fetch_add(end-start, &REASON_TPAUSE_TIMER);
+			break;
+		default:
+			break;
+			
+	}
 
 	return kvm_vmx_exit_handlers[exit_handler_index](vcpu);
 
