@@ -35,3 +35,43 @@ Replaced the updates files in the kernel code and rebuilt the code.
 
 ![image](https://user-images.githubusercontent.com/67281829/142979898-0aaad88d-3b84-4add-8e83-6357846fd31d.png)
 ![image](https://user-images.githubusercontent.com/67281829/142980036-a705e232-0b95-4332-98b2-c7aa08a389db.png)
+
+# Assignment 3 CMPE 283
+
+## Contributions
+We connected over a zoom call to run the updated kernel code with the functionalities. We resolved the errors in this process together.
+
+### Himaja Chandaluri
+I was responsible for implementing the `0x4FFFFFFD` leaf node functionality of the code. In the process I updated the cpuid.c and vmx.c files of the kernel. I wrote the code referencing the SDM Manual for the exit reasons. I created the test file to test the leaf node functionality of the kernel. I compiled and loaded the kernel and tested the code using the test file.
+
+### Chandra Lekha Mamidi
+
+## Steps followed
+
+Updated the kernal code in `cpuid.c` and `vmx.c` files and executed the following commands
+
+1. `make -j 8 modules`
+2. `make INSTALL_MOD_STRIP=1 modules_install`
+3. `lsmod | grep kvm`
+4. `rmmod kvm_intel`
+5. `rmmod kvm`
+6. `lsmod | grep kvm`
+7. `modprobe kvm`
+8. `modprobe kvm_intel`
+9. `lsmod | grep kvm`
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/67281829/143991924-b223cf12-e0bf-42bd-914d-f6c428b154b3.png)
+
+![image](https://user-images.githubusercontent.com/67281829/143991960-f708117e-9bcb-4e03-9d59-39997bcca15a.png)
+
+![image](https://user-images.githubusercontent.com/67281829/143991987-9425c531-bc15-459c-861e-9bd17f25a2d3.png)
+
+![image](https://user-images.githubusercontent.com/67281829/143992006-d67171c6-05e8-4a8d-8a8e-577a1a0b2294.png)
+
+![image](https://user-images.githubusercontent.com/67281829/143992033-27a5491e-06c6-47ab-a18d-f91092e485d3.png)
+
+![image](https://user-images.githubusercontent.com/67281829/143992057-d3782234-a978-40fb-ae37-53f041bdb27c.png)
+
+![image](https://user-images.githubusercontent.com/67281829/143992079-89886c33-10df-418d-a723-0a03e12e082a.png)
