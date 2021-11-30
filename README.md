@@ -45,6 +45,7 @@ We connected over a zoom call to run the updated kernel code with the functional
 I was responsible for implementing the `0x4FFFFFFD` leaf node functionality of the code. In the process I updated the cpuid.c and vmx.c files of the kernel. I wrote the code referencing the SDM Manual for the exit reasons. I created the test file to test the leaf node functionality of the kernel. I compiled and loaded the kernel and tested the code using the test file.
 
 ### Chandra Lekha Mamidi
+I was responsible for implementing the `OX4FFFFFFC` leaf node functionality of the code. I changed the cpuid.c and vmx.c files. Icompiled and loaded the kernel and tested the code using the test file, which was created to test the leaf node functionality of the kernel.
 
 ## Steps followed
 
