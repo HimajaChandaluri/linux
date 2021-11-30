@@ -1269,10 +1269,259 @@ atomic64_t time_spent = ATOMIC_INIT(0);
 EXPORT_SYMBOL(exit_cnt);
 EXPORT_SYMBOL(time_spent);
 
+/* Exit counters for each exit code*/
+
+atomic_t EXIT_REASON_EXCEPTION_NMI_VAR    = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_EXTERNAL_INTERRUPT_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_TRIPLE_FAULT_VAR     = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_INIT_SIGNAL_VAR	  = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_SIPI_SIGNAL_VAR      = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_INTERRUPT_WINDOW_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_NMI_WINDOW_VAR       = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_TASK_SWITCH_VAR      = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_CPUID_VAR            = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_HLT_VAR              = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_INVD_VAR             = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_INVLPG_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_RDPMC_VAR            = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_RDTSC_VAR            = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMCALL_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMCLEAR_VAR          = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMLAUNCH_VAR         = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMPTRLD_VAR          = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMPTRST_VAR          = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMREAD_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMRESUME_VAR         = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMWRITE_VAR          = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMOFF_VAR            = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMON_VAR             = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_CR_ACCESS_VAR        = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_DR_ACCESS_VAR        = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_IO_INSTRUCTION_VAR   = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_MSR_READ_VAR         = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_MSR_WRITE_VAR        = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_INVALID_STATE_VAR    = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_MSR_LOAD_FAIL_VAR    = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_MWAIT_INSTRUCTION_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_MONITOR_TRAP_FLAG_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_MONITOR_INSTRUCTION_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_PAUSE_INSTRUCTION_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_MCE_DURING_VMENTRY_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_TPR_BELOW_THRESHOLD_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_APIC_ACCESS_VAR      = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_EOI_INDUCED_VAR      = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_GDTR_IDTR_VAR        = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_LDTR_TR_VAR          = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_EPT_VIOLATION_VAR    = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_EPT_MISCONFIG_VAR    = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_INVEPT_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_RDTSCP_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_PREEMPTION_TIMER_VAR = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_INVVPID_VAR          = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_WBINVD_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_XSETBV_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_APIC_WRITE_VAR       = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_RDRAND_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_INVPCID_VAR          = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_VMFUNC_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_ENCLS_VAR            = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_RDSEED_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_PML_FULL_VAR         = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_XSAVES_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_XRSTORS_VAR          = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_UMWAIT_VAR           = ATOMIC_INIT(0);
+atomic_t EXIT_REASON_TPAUSE_VAR           = ATOMIC_INIT(0);
+
+atomic64_t EXCEPTION_NMI_TIMER    = ATOMIC_INIT(0);
+atomic64_t EXTERNAL_INTERRUPT_TIMER = ATOMIC_INIT(0);
+atomic64_t TRIPLE_FAULT_TIMER     = ATOMIC_INIT(0);
+atomic64_t INIT_SIGNAL_TIMER	  = ATOMIC_INIT(0);
+atomic64_t SIPI_SIGNAL_TIMER      = ATOMIC_INIT(0);
+atomic64_t INTERRUPT_WINDOW_TIMER = ATOMIC_INIT(0);
+atomic64_t NMI_WINDOW_TIMER       = ATOMIC_INIT(0);
+atomic64_t TASK_SWITCH_TIMER      = ATOMIC_INIT(0);
+atomic64_t REASON_CPUID_TIMER            = ATOMIC_INIT(0);
+atomic64_t REASON_HLT_TIMER              = ATOMIC_INIT(0);
+atomic64_t REASON_INVD_TIMER             = ATOMIC_INIT(0);
+atomic64_t REASON_INVLPG_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_RDPMC_TIMER            = ATOMIC_INIT(0);
+atomic64_t REASON_RDTSC_TIMER            = ATOMIC_INIT(0);
+atomic64_t REASON_VMCALL_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_VMCLEAR_TIMER          = ATOMIC_INIT(0);
+atomic64_t REASON_VMLAUNCH_TIMER         = ATOMIC_INIT(0);
+atomic64_t REASON_VMPTRLD_TIMER          = ATOMIC_INIT(0);
+atomic64_t REASON_VMPTRST_TIMER          = ATOMIC_INIT(0);
+atomic64_t REASON_VMREAD_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_VMRESUME_TIMER         = ATOMIC_INIT(0);
+atomic64_t REASON_VMWRITE_TIMER          = ATOMIC_INIT(0);
+atomic64_t REASON_VMOFF_TIMER            = ATOMIC_INIT(0);
+atomic64_t REASON_VMON_TIMER             = ATOMIC_INIT(0);
+atomic64_t REASON_CR_ACCESS_TIMER        = ATOMIC_INIT(0);
+atomic64_t REASON_DR_ACCESS_TIMER        = ATOMIC_INIT(0);
+atomic64_t REASON_IO_INSTRUCTION_TIMER   = ATOMIC_INIT(0);
+atomic64_t REASON_MSR_READ_TIMER         = ATOMIC_INIT(0);
+atomic64_t REASON_MSR_WRITE_TIMER        = ATOMIC_INIT(0);
+atomic64_t REASON_INVALID_STATE_TIMER    = ATOMIC_INIT(0);
+atomic64_t REASON_MSR_LOAD_FAIL_TIMER    = ATOMIC_INIT(0);
+atomic64_t REASON_MWAIT_INSTRUCTION_TIMER = ATOMIC_INIT(0);
+atomic64_t REASON_MONITOR_TRAP_FLAG_TIMER = ATOMIC_INIT(0);
+atomic64_t REASON_MONITOR_INSTRUCTION_TIMER = ATOMIC_INIT(0);
+atomic64_t REASON_PAUSE_INSTRUCTION_TIMER = ATOMIC_INIT(0);
+atomic64_t REASON_MCE_DURING_VMENTRY_TIMER = ATOMIC_INIT(0);
+atomic64_t REASON_TPR_BELOW_THRESHOLD_TIMER = ATOMIC_INIT(0);
+atomic64_t REASON_APIC_ACCESS_TIMER      = ATOMIC_INIT(0);
+atomic64_t REASON_EOI_INDUCED_TIMER      = ATOMIC_INIT(0);
+atomic64_t REASON_GDTR_IDTR_TIMER        = ATOMIC_INIT(0);
+atomic64_t REASON_LDTR_TR_TIMER          = ATOMIC_INIT(0);
+atomic64_t REASON_EPT_VIOLATION_TIMER    = ATOMIC_INIT(0);
+atomic64_t REASON_EPT_MISCONFIG_TIMER    = ATOMIC_INIT(0);
+atomic64_t REASON_INVEPT_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_RDTSCP_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_PREEMPTION_TIMER_TIMER = ATOMIC_INIT(0);
+atomic64_t REASON_INVVPID_TIMER          = ATOMIC_INIT(0);
+atomic64_t REASON_WBINVD_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_XSETBV_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_APIC_WRITE_TIMER       = ATOMIC_INIT(0);
+atomic64_t REASON_RDRAND_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_INVPCID_TIMER          = ATOMIC_INIT(0);
+atomic64_t REASON_VMFUNC_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_ENCLS_TIMER            = ATOMIC_INIT(0);
+atomic64_t REASON_RDSEED_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_PML_FULL_TIMER         = ATOMIC_INIT(0);
+atomic64_t REASON_XSAVES_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_XRSTORS_TIMER          = ATOMIC_INIT(0);
+atomic64_t REASON_UMWAIT_TIMER           = ATOMIC_INIT(0);
+atomic64_t REASON_TPAUSE_TIMER           = ATOMIC_INIT(0);
+
+
+EXPORT_SYMBOL(EXIT_REASON_EXCEPTION_NMI_VAR);
+EXPORT_SYMBOL(EXIT_REASON_EXTERNAL_INTERRUPT_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_TRIPLE_FAULT_VAR);     
+EXPORT_SYMBOL(EXIT_REASON_INIT_SIGNAL_VAR);	  
+EXPORT_SYMBOL(EXIT_REASON_SIPI_SIGNAL_VAR);      
+EXPORT_SYMBOL(EXIT_REASON_INTERRUPT_WINDOW_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_NMI_WINDOW_VAR);       
+EXPORT_SYMBOL(EXIT_REASON_TASK_SWITCH_VAR);      
+EXPORT_SYMBOL(EXIT_REASON_CPUID_VAR);            
+EXPORT_SYMBOL(EXIT_REASON_HLT_VAR);              
+EXPORT_SYMBOL(EXIT_REASON_INVD_VAR);             
+EXPORT_SYMBOL(EXIT_REASON_INVLPG_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_RDPMC_VAR);            
+EXPORT_SYMBOL(EXIT_REASON_RDTSC_VAR);            
+EXPORT_SYMBOL(EXIT_REASON_VMCALL_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_VMCLEAR_VAR);          
+EXPORT_SYMBOL(EXIT_REASON_VMLAUNCH_VAR);         
+EXPORT_SYMBOL(EXIT_REASON_VMPTRLD_VAR);          
+EXPORT_SYMBOL(EXIT_REASON_VMPTRST_VAR);          
+EXPORT_SYMBOL(EXIT_REASON_VMREAD_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_VMRESUME_VAR);         
+EXPORT_SYMBOL(EXIT_REASON_VMWRITE_VAR);          
+EXPORT_SYMBOL(EXIT_REASON_VMOFF_VAR);            
+EXPORT_SYMB);             
+EXPORT_SYMBOL(EXIT_REASON_CR_ACCESS_VAR);        
+EXPORT_SYMBOL(EXIT_REASON_DR_ACCESS_VAR);        
+EXPORT_SYMBOL(EXIT_REASON_IO_INSTRUCTION_VAR);   
+EXPORT_SYMBOL(EXIT_REASON_MSR_READ_VAR);         
+EXPORT_SYMBOL(EXIT_REASON_MSR_WRITE_VAR);        
+EXPORT_SYMBOL(EXIT_REASON_INVALID_STATE_VAR);    
+EXPORT_SYMBOL(EXIT_REASON_MSR_LOAD_FAIL_VAR);    
+EXPORT_SYMBOL(EXIT_REASON_MWAIT_INSTRUCTION_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_MONITOR_TRAP_FLAG_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_MONITOR_INSTRUCTION_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_PAUSE_INSTRUCTION_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_MCE_DURING_VMENTRY_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_TPR_BELOW_THRESHOLD_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_APIC_ACCESS_VAR);      
+EXPORT_SYMBOL(EXIT_REASON_EOI_INDUCED_VAR);      
+EXPORT_SYMBOL(EXIT_REASON_GDTR_IDTR_VAR);        
+EXPORT_SYMBOL(EXIT_REASON_LDTR_TR_VAR);          
+EXPORT_SYMBOL(EXIT_REASON_EPT_VIOLATION_VAR);    
+EXPORT_SYMBOL(EXIT_REASON_EPT_MISCONFIG_VAR);    
+EXPORT_SYMBOL(EXIT_REASON_INVEPT_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_RDTSCP_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_PREEMPTION_TIMER_VAR); 
+EXPORT_SYMBOL(EXIT_REASON_INVVPID_VAR);          
+EXPORT_SYMBOL(EXIT_REASON_WBINVD_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_XSETBV_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_APIC_WRITE_VAR);       
+EXPORT_SYMBOL(EXIT_REASON_RDRAND_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_INVPCID_VAR);          
+EXPORT_SYMBOL(EXIT_REASON_VMFUNC_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_ENCLS_VAR);            
+EXPORT_SYMBOL(EXIT_REASON_RDSEED_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_PML_FULL_VAR);         
+EXPORT_SYMBOL(EXIT_REASON_XSAVES_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_XRSTORS_VAR);          
+EXPORT_SYMBOL(EXIT_REASON_UMWAIT_VAR);           
+EXPORT_SYMBOL(EXIT_REASON_TPAUSE_VAR);
+
+
+EXPORT_SYMBOL(EXCEPTION_NMI_TIMER);
+EXPORT_SYMBOL(EXTERNAL_INTERRUPT_TIMER);
+EXPORT_SYMBOL(TRIPLE_FAULT_TIMER); 
+EXPORT_SYMBOL(INIT_SIGNAL_TIMER);
+EXPORT_SYMBOL(SIPI_SIGNAL_TIMER); 
+EXPORT_SYMBOL(INTERRUPT_WINDOW_TIMER); 
+EXPORT_SYMBOL(NMI_WINDOW_TIMER); 
+EXPORT_SYMBOL(TASK_SWITCH_TIMER); 
+EXPORT_SYMBOL(REASON_CPUID_TIMER); 
+EXPORT_SYMBOL(REASON_HLT_TIMER);              
+EXPORT_SYMBOL(REASON_INVD_TIMER);             
+EXPORT_SYMBOL(REASON_INVLPG_TIMER);           
+EXPORT_SYMBOL(REASON_RDPMC_TIMER);            
+EXPORT_SYMBOL(REASON_RDTSC_TIMER);            
+EXPORT_SYMBOL(REASON_VMCALL_TIMER);           
+EXPORT_SYMBOL(REASON_VMCLEAR_TIMER);          
+EXPORT_SYMBOL(REASON_VMLAUNCH_TIMER);         
+EXPORT_SYMBOL(REASON_VMPTRLD_TIMER);          
+EXPORT_SYMBOL(REASON_VMPTRST_TIMER);          
+EXPORT_SYMBOL(REASON_VMREAD_TIMER);           
+EXPORT_SYMBOL(REASON_VMRESUME_TIMER);         
+EXPORT_SYMBOL(REASON_VMWRITE_TIMER);          
+EXPORT_SYMBOL(REASON_VMOFF_TIMER);            
+EXPORT_SYMBOL(REASON_VMON_TIMER);             
+EXPORT_SYMBOL(REASON_CR_ACCESS_TIMER);        
+EXPORT_SYMBOL(REASON_DR_ACCESS_TIMER);        
+EXPORT_SYMBOL(REASON_IO_INSTRUCTION_TIMER);   
+EXPORT_SYMBOL(REASON_MSR_READ_TIMER);         
+EXPORT_SYMBOL(REASON_MSR_WRITE_TIMER);        
+EXPORT_SYMBOL(REASON_INVALID_STATE_TIMER);    
+EXPORT_SYMBOL(REASON_MSR_LOAD_FAIL_TIMER);    
+EXPORT_SYMBOL(REASON_MWAIT_INSTRUCTION_TIMER);
+EXPORT_SYMBOL(REASON_MONITOR_TRAP_FLAG_TIMER);
+EXPORT_SYMBOL(REASON_MONITOR_INSTRUCTION_TIMER);
+EXPORT_SYMBOL(REASON_PAUSE_INSTRUCTION_TIMER); 
+EXPORT_SYMBOL(REASON_MCE_DURING_VMENTRY_TIMER);
+EXPORT_SYMBOL(REASON_TPR_BELOW_THRESHOLD_TIMER);
+EXPORT_SYMBOL(REASON_APIC_ACCESS_TIMER);      
+EXPORT_SYMBOL(REASON_EOI_INDUCED_TIMER);      
+EXPORT_SYMBOL(REASON_GDTR_IDTR_TIMER);        
+EXPORT_SYMBOL(REASON_LDTR_TR_TIMER);          
+EXPORT_SYMBOL(REASON_EPT_VIOLATION_TIMER);    
+EXPORT_SYMBOL(REASON_EPT_MISCONFIG_TIMER);    
+EXPORT_SYMBOL(REASON_INVEPT_TIMER);           
+EXPORT_SYMBOL(REASON_RDTSCP_TIMER);           
+EXPORT_SYMBOL(REASON_PREEMPTION_TIMER_TIMER); 
+EXPORT_SYMBOL(REASON_INVVPID_TIMER);          
+EXPORT_SYMBOL(REASON_WBINVD_TIMER);           
+EXPORT_SYMBOL(REASON_XSETBV_TIMER);           
+EXPORT_SYMBOL(REASON_APIC_WRITE_TIMER);       
+EXPORT_SYMBOL(REASON_RDRAND_TIMER);           
+EXPORT_SYMBOL(REASON_INVPCID_TIMER);          
+EXPORT_SYMBOL(REASON_VMFUNC_TIMER);           
+EXPORT_SYMBOL(REASON_ENCLS_TIMER);            
+EXPORT_SYMBOL(REASON_RDSEED_TIMER);           
+EXPORT_SYMBOL(REASON_PML_FULL_TIMER);         
+EXPORT_SYMBOL(REASON_XSAVES_TIMER);           
+EXPORT_SYMBOL(REASON_XRSTORS_TIMER);          
+EXPORT_SYMBOL(REASON_UMWAIT_TIMER);           
+EXPORT_SYMBOL(REASON_TPAUSE_TIMER);
+
 int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 {
 	u32 eax, ebx, ecx, edx;
 	uint64_t time_cycles;
+	bool valid = true;
 
 	if (cpuid_fault_enabled(vcpu) && !kvm_require_cpl(vcpu, 0))
 		return 1;
@@ -1280,12 +1529,18 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 	eax = kvm_rax_read(vcpu);
 	ecx = kvm_rcx_read(vcpu);
 	
+	printk(KERN_INFO "EAX Value: %u ECX Value: %u", eax, ecx);
+	
+
+	/*Assign-2 changes*/
+
 	if(eax==0x4FFFFFFF){
 		eax = atomic_read(&exit_cnt);
 		printk(KERN_INFO "Number of exits: %u", eax);
 
 	}
 	
+	/*Assign-2 changes*/
 	else if (eax==0x4FFFFFFE) {
 		
 		time_cycles = atomic64_read(&time_spent);
@@ -1298,6 +1553,444 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 		ecx = (u32)time_cycles;
 		printk(KERN_INFO "Higher Bits: %u, Lower Bits: %u", ebx, ecx);
 	}
+	
+	/*Assign-3 changes*/
+	else if(eax == 0x4FFFFFFC){
+	
+
+		
+		printk(KERN_INFO "EAX value: (0x4FFFFFFC)\n");
+		printk(KERN_INFO "ECX value in decimal: %u\n", ecx);
+		printk(KERN_INFO "ECX value in hex: %x\n", ecx);
+		
+		
+		switch(ecx){
+		
+			case 5:
+			case 6:
+			case 11:
+			case 17:
+			case 66:
+			case 69:
+				eax = ebx = ecx = edx = 0;
+				valid = false;
+				printk(KERN_INFO "Not Enabled inside KVM\n");
+				break;
+				
+			case 0:
+				time_cycles = atomic64_read(&EXCEPTION_NMI_TIMER);
+				break;
+			case 1:
+				time_cycles = atomic64_read(&EXTERNAL_INTERRUPT_TIMER);
+				break;
+			case 2:
+				time_cycles = atomic64_read(&TRIPLE_FAULT_TIMER);
+				break;    
+			case 3:
+				time_cycles = atomic64_read(&INIT_SIGNAL_TIMER);
+				break;		
+			case 4:
+				time_cycles = atomic64_read(&SIPI_SIGNAL_TIMER);
+				break;     
+			case 7:
+				time_cycles = atomic64_read(&INTERRUPT_WINDOW_TIMER);
+				break;
+			case 8:
+				time_cycles = atomic64_read(&NMI_WINDOW_TIMER);
+				break;      
+			case 9:
+				time_cycles = atomic64_read(&TASK_SWITCH_TIMER);
+				break;     
+			case 10:
+				time_cycles = atomic64_read(&REASON_CPUID_TIMER);
+				break;           
+			case 12:
+				time_cycles = atomic64_read(&REASON_HLT_TIMER);
+				break;             
+			case 13:
+				time_cycles = atomic64_read(&REASON_INVD_TIMER);
+				break;            
+			case 14:
+				time_cycles = atomic64_read(&REASON_INVLPG_TIMER);
+				break;          
+			case 15:
+				time_cycles = atomic64_read(&REASON_RDPMC_TIMER);
+				break;           
+			case 16:
+				time_cycles = atomic64_read(&REASON_RDTSC_TIMER);
+				break;           
+			case 18:
+				time_cycles = atomic64_read(&REASON_VMCALL_TIMER);
+				break;          
+			case 19:
+				time_cycles = atomic64_read(&REASON_VMCLEAR_TIMER);
+				break;         
+			case 20:
+				time_cycles = atomic64_read(&REASON_VMLAUNCH_TIMER);
+				break;        
+			case 21:
+				time_cycles = atomic64_read(&REASON_VMPTRLD_TIMER);
+				break;         
+			case 22:
+				time_cycles = atomic64_read(&REASON_VMPTRST_TIMER);
+				break;         
+			case 23:
+				time_cycles = atomic64_read(&REASON_VMREAD_TIMER);
+				break;          
+			case 24:
+				time_cycles = atomic64_read(&REASON_VMRESUME_TIMER);
+				break;        
+			case 25:
+				time_cycles = atomic64_read(&REASON_VMWRITE_TIMER);
+				break;         
+			case 26:
+				time_cycles = atomic64_read(&REASON_VMOFF_TIMER);
+				break;           
+			case 27:
+				time_cycles = atomic64_read(&REASON_VMON_TIMER);
+				break;            
+			case 28:
+				time_cycles = atomic64_read(&REASON_CR_ACCESS_TIMER);
+				break;       
+			case 29:
+				time_cycles = atomic64_read(&REASON_DR_ACCESS_TIMER);
+				break;       
+			case 30:
+				time_cycles = atomic64_read(&REASON_IO_INSTRUCTION_TIMER);
+				break;  
+			case 31:
+				time_cycles = atomic64_read(&REASON_MSR_READ_TIMER);
+				break;        
+			case 32:
+				time_cycles = atomic64_read(&REASON_MSR_WRITE_TIMER);
+				break;       
+			case 33:
+				time_cycles = atomic64_read(&REASON_INVALID_STATE_TIMER);
+				break;   
+			case 34:
+				time_cycles = atomic64_read(&REASON_MSR_LOAD_FAIL_TIMER);
+				break;   
+			case 36:
+				time_cycles = atomic64_read(&REASON_MWAIT_INSTRUCTION_TIMER);
+				break;
+			case 37:
+				time_cycles = atomic64_read(&REASON_MONITOR_TRAP_FLAG_TIMER);
+				break;
+			case 39:
+				time_cycles = atomic64_read(&REASON_MONITOR_INSTRUCTION_TIMER);
+				break;
+			case 40:
+				time_cycles = atomic64_read(&REASON_PAUSE_INSTRUCTION_TIMER);
+				break;
+			case 41:
+				time_cycles = atomic64_read(&REASON_MCE_DURING_VMENTRY_TIMER);
+				break;
+			case 43:
+				time_cycles = atomic64_read(&REASON_TPR_BELOW_THRESHOLD_TIMER);
+				break;
+			case 44:
+				time_cycles = atomic64_read(&REASON_APIC_ACCESS_TIMER);
+				break;     
+			case 45:
+				time_cycles = atomic64_read(&REASON_EOI_INDUCED_TIMER);
+				break;     
+			case 46:
+				time_cycles = atomic64_read(&REASON_GDTR_IDTR_TIMER);
+				break;       
+			case 47:
+				time_cycles = atomic64_read(&REASON_LDTR_TR_TIMER);
+				break;         
+			case 48:
+				time_cycles = atomic64_read(&REASON_EPT_VIOLATION_TIMER);
+				break;   
+			case 49:
+				time_cycles = atomic64_read(&REASON_EPT_MISCONFIG_TIMER);
+				break;   
+			case 50:
+				time_cycles = atomic64_read(&REASON_INVEPT_TIMER);
+				break;          
+			case 51:
+				time_cycles = atomic64_read(&REASON_RDTSCP_TIMER);
+				break;          
+			case 52:
+				time_cycles = atomic64_read(&REASON_PREEMPTION_TIMER_TIMER);
+				break;
+			case 53:
+				time_cycles = atomic64_read(&REASON_INVVPID_TIMER);
+				break;         
+			case 54:
+				time_cycles = atomic64_read(&REASON_WBINVD_TIMER);
+				break;          
+			case 55:
+				time_cycles = atomic64_read(&REASON_XSETBV_TIMER);
+				break;          
+			case 56:
+				time_cycles = atomic64_read(&REASON_APIC_WRITE_TIMER);
+				break;      
+			case 57:
+				time_cycles = atomic64_read(&REASON_RDRAND_TIMER);
+				break;          
+			case 58:
+				time_cycles = atomic64_read(&REASON_INVPCID_TIMER);
+				break;         
+			case 59:
+				time_cycles = atomic64_read(&REASON_VMFUNC_TIMER);
+				break;          
+			case 60:
+				time_cycles = atomic64_read(&REASON_ENCLS_TIMER);
+				break;           
+			case 61:
+				time_cycles = atomic64_read(&REASON_RDSEED_TIMER);
+				break;          
+			case 62:
+				time_cycles = atomic64_read(&REASON_PML_FULL_TIMER);
+				break;        
+			case 63:
+				time_cycles = atomic64_read(&REASON_XSAVES_TIMER);
+				break;          
+			case 64:
+				time_cycles = atomic64_read(&REASON_XRSTORS_TIMER);
+				break;         
+			case 67:
+				time_cycles = atomic64_read(&REASON_UMWAIT_TIMER);
+				break;          
+			case 68:
+				time_cycles = atomic64_read(&REASON_TPAUSE_TIMER);
+				break;
+
+			default:
+			printk(KERN_INFO "Invalid Exit Code Request\n");
+				eax = ebx = ecx = 0;
+				edx = 0xFFFFFFFF;
+				valid = false;
+		}
+		
+
+		
+		if (valid == true){	
+		
+			// update ebx with high 32 bits of time cycles
+			ebx = (u32)(time_cycles >> 32);
+			
+			// update ecx with low 32 bits of time cycles
+			ecx = (u32)time_cycles;
+			printk(KERN_INFO "Higher Bits: %u, Lower Bits: %u", ebx, ecx);
+			
+		}
+			
+		
+	}
+	
+	/*Assign-3 changes*/
+
+	else if(eax == 0x4FFFFFFD){
+	
+		
+		printk(KERN_INFO "EAX value: (0x4FFFFFFD)\n");
+		printk(KERN_INFO "ECX value in decimal: %u\n", ecx);
+		printk(KERN_INFO "ECX value in hex: %x\n", ecx);
+		
+		switch(ecx){
+			case 5:
+			case 6:
+			case 11:
+			case 17:
+			case 66:
+			case 69:
+				eax = ebx = ecx = edx = 0;
+				printk(KERN_INFO "Not Enabled inside KVM\n");
+				break;
+				
+			case 0:
+				eax = atomic_read(&EXIT_REASON_EXCEPTION_NMI_VAR);
+				break;
+			case 1:
+				eax = atomic_read(&EXIT_REASON_EXTERNAL_INTERRUPT_VAR);
+				break;
+			case 2:
+				eax = atomic_read(&EXIT_REASON_TRIPLE_FAULT_VAR);
+				break;    
+			case 3:
+				eax = atomic_read(&EXIT_REASON_INIT_SIGNAL_VAR);
+				break;		
+			case 4:
+				eax = atomic_read(&EXIT_REASON_SIPI_SIGNAL_VAR);
+				break;     
+			case 7:
+				eax = atomic_read(&EXIT_REASON_INTERRUPT_WINDOW_VAR);
+				break;
+			case 8:
+				eax = atomic_read(&EXIT_REASON_NMI_WINDOW_VAR);
+				break;      
+			case 9:
+				eax = atomic_read(&EXIT_REASON_TASK_SWITCH_VAR);
+				break;     
+			case 10:
+				eax = atomic_read(&EXIT_REASON_CPUID_VAR);
+				break;           
+			case 12:
+				eax = atomic_read(&EXIT_REASON_HLT_VAR);
+				break;             
+			case 13:
+				eax = atomic_read(&EXIT_REASON_INVD_VAR);
+				break;            
+			case 14:
+				eax = atomic_read(&EXIT_REASON_INVLPG_VAR);
+				break;          
+			case 15:
+				eax = atomic_read(&EXIT_REASON_RDPMC_VAR);
+				break;           
+			case 16:
+				eax = atomic_read(&EXIT_REASON_RDTSC_VAR);
+				break;           
+			case 18:
+				eax = atomic_read(&EXIT_REASON_VMCALL_VAR);
+				break;          
+			case 19:
+				eax = atomic_read(&EXIT_REASON_VMCLEAR_VAR);
+				break;         
+			case 20:
+				eax = atomic_read(&EXIT_REASON_VMLAUNCH_VAR);
+				break;        
+			case 21:
+				eax = atomic_read(&EXIT_REASON_VMPTRLD_VAR);
+				break;         
+			case 22:
+				eax = atomic_read(&EXIT_REASON_VMPTRST_VAR);
+				break;         
+			case 23:
+				eax = atomic_read(&EXIT_REASON_VMREAD_VAR);
+				break;          
+			case 24:
+				eax = atomic_read(&EXIT_REASON_VMRESUME_VAR);
+				break;        
+			case 25:
+				eax = atomic_read(&EXIT_REASON_VMWRITE_VAR);
+				break;         
+			case 26:
+				eax = atomic_read(&EXIT_REASON_VMOFF_VAR);
+				break;           
+			case 27:
+				eax = atomic_read(&EXIT_REASON_VMON_VAR));
+				break;            
+			case 28:
+				eax = atomic_read(&EXIT_REASON_CR_ACCESS_VAR);
+				break;       
+			case 29:
+				eax = atomic_read(&EXIT_REASON_DR_ACCESS_VAR);
+				break;       
+			case 30:
+				eax = atomic_read(&EXIT_REASON_IO_INSTRUCTION_VAR);
+				break;  
+			case 31:
+				eax = atomic_read(&EXIT_REASON_MSR_READ_VAR);
+				break;        
+			case 32:
+				eax = atomic_read(&EXIT_REASON_MSR_WRITE_VAR);
+				break;       
+			case 33:
+				eax = atomic_read(&EXIT_REASON_INVALID_STATE_VAR);
+				break;   
+			case 34:
+				eax = atomic_read(&EXIT_REASON_MSR_LOAD_FAIL_VAR);
+				break;   
+			case 36:
+				eax = atomic_read(&EXIT_REASON_MWAIT_INSTRUCTION_VAR);
+				break;
+			case 37:
+				eax = atomic_read(&EXIT_REASON_MONITOR_TRAP_FLAG_VAR);
+				break;
+			case 39:
+				eax = atomic_read(&EXIT_REASON_MONITOR_INSTRUCTION_VAR);
+				break;
+			case 40:
+				eax = atomic_read(&EXIT_REASON_PAUSE_INSTRUCTION_VAR);
+				break;
+			case 41:
+				eax = atomic_read(&EXIT_REASON_MCE_DURING_VMENTRY_VAR);
+				break;
+			case 43:
+				eax = atomic_read(&EXIT_REASON_TPR_BELOW_THRESHOLD_VAR);
+				break;
+			case 44:
+				eax = atomic_read(&EXIT_REASON_APIC_ACCESS_VAR);
+				break;     
+			case 45:
+				eax = atomic_read(&EXIT_REASON_EOI_INDUCED_VAR);
+				break;     
+			case 46:
+				eax = atomic_read(&EXIT_REASON_GDTR_IDTR_VAR);
+				break;       
+			case 47:
+				eax = atomic_read(&EXIT_REASON_LDTR_TR_VAR);
+				break;         
+			case 48:
+				eax = atomic_read(&EXIT_REASON_EPT_VIOLATION_VAR);
+				break;   
+			case 49:
+				eax = atomic_read(&EXIT_REASON_EPT_MISCONFIG_VAR);
+				break;   
+			case 50:
+				eax = atomic_read(&EXIT_REASON_INVEPT_VAR);
+				break;          
+			case 51:
+				eax = atomic_read(&EXIT_REASON_RDTSCP_VAR);
+				break;          
+			case 52:
+				eax = atomic_read(&EXIT_REASON_PREEMPTION_TIMER_VAR);
+				break;
+			case 53:
+				eax = atomic_read(&EXIT_REASON_INVVPID_VAR);
+				break;         
+			case 54:
+				eax = atomic_read(&EXIT_REASON_WBINVD_VAR);
+				break;          
+			case 55:
+				eax = atomic_read(&EXIT_REASON_XSETBV_VAR);
+				break;          
+			case 56:
+				eax = atomic_read(&EXIT_REASON_APIC_WRITE_VAR);
+				break;      
+			case 57:
+				eax = atomic_read(&EXIT_REASON_RDRAND_VAR);
+				break;          
+			case 58:
+				eax = atomic_read(&EXIT_REASON_INVPCID_VAR);
+				break;         
+			case 59:
+				eax = atomic_read(&EXIT_REASON_VMFUNC_VAR);
+				break;          
+			case 60:
+				eax = atomic_read(&EXIT_REASON_ENCLS_VAR);
+				break;           
+			case 61:
+				eax = atomic_read(&EXIT_REASON_RDSEED_VAR);
+				break;          
+			case 62:
+				eax = atomic_read(&EXIT_REASON_PML_FULL_VAR);
+				break;        
+			case 63:
+				eax = atomic_read(&EXIT_REASON_XSAVES_VAR);
+				break;          
+			case 64:
+				eax = atomic_read(&EXIT_REASON_XRSTORS_VAR);
+				break;         
+			case 67:
+				eax = atomic_read(&EXIT_REASON_UMWAIT_VAR);
+				break;          
+			case 68:
+				eax = atomic_read(&EXIT_REASON_TPAUSE_VAR);
+				break;
+				
+			default:
+			printk(KERN_INFO "Invalid Exit Code Request\n");
+				eax = ebx = ecx = 0;
+				edx = 0xFFFFFFFF;
+		}
+			
+		
+	}
+	
 	else
 	{
 		kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
