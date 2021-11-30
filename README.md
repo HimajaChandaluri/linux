@@ -82,3 +82,23 @@ Updated the kernal code in `cpuid.c` and `vmx.c` files and executed the followin
 more exits performed during certain VM operations? Approximately how many exits does a full VM 
 boot entail?
 
+| exit | First   | Add File | Reboot  | Delete File | Reboot  |
+|------|---------|----------|---------|-------------|---------|
+| 0    | 33004   | 33015    | 49868   | 49872       | 66675   |
+| 10   | 282950  | 286970   | 427019  | 427772      | 565667  |
+| 28   | 64397   | 64397    | 96629   | 96629       | 128375  |
+| 29   | 5       | 5        | 7       | 7           | 9       |
+| 30   | 424858  | 437764   | 645085  | 657672      | 861609  |
+| 31   | 6074    | 7967     | 9980    | 11213       | 13156   |
+| 40   | 14247   | 22238    | 24212   | 25093       | 26893   |
+| 46   | 14      | 14       | 21      | 21          | 28      |
+| 47   | 6       | 6        | 9       | 9           | 12      |
+| 48   | 2277897 | 2586505  | 3557448 | 3590403     | 4624003 |
+| 54   | 6       | 6        | 9       | 9           | 12      |
+| 55   | 6       | 6        | 9       | 9           | 12      |
+
+The exits increase at a stable rate on reboot. For example, we can see that the values for exit no 29,46,47,54, and 55 increase by 2,7,3,3,3 respectively. During VM reboot large number of VM exits are observed. Based on the observations we can see that approximately 1.4M VM exits occured during a reboot.
+
+2) Of the exit types defined in the SDM, which are the most frequent? Least?
+
+As we can see exit 48 and exit 30 are the most frequent exit types. Apart from the exit codes which have zero count, the least frequent exit codes are 29,47,54,55, and 46.
