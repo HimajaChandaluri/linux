@@ -10,6 +10,8 @@ and after results
 
 ### Chandra Lekha Mamidi
 
+We as a team worked on the task of determining the correct command to disable ept, and executed the 3rd assignment code to get the before and after results
+
 |With EPT enabled|With EPT desabled|
 |---|---|
 |![image](https://user-images.githubusercontent.com/67281829/145336577-3656d5ab-8802-4c45-a294-d60381ac6d21.png)|![image](https://user-images.githubusercontent.com/67281829/145336610-a55d3818-ef24-46d3-aa7d-c765ec31441f.png)|
