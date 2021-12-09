@@ -1,3 +1,38 @@
+# Asssignment 4 CMPE 283
+
+## Contributions
+We connected over a zoom call to perform the task
+
+### Himaja Chandaluri
+
+I worked on the task of determining the correct command to disable ept, with Chandra Lekha and executed the 3rd assignment code to get the before 
+and after results
+
+### Chandra Lekha Mamidi
+
+|With EPT enabled|With EPT desabled|
+|---|---|
+|![image](https://user-images.githubusercontent.com/67281829/145336577-3656d5ab-8802-4c45-a294-d60381ac6d21.png)|![image](https://user-images.githubusercontent.com/67281829/145336610-a55d3818-ef24-46d3-aa7d-c765ec31441f.png)|
+|![image](https://user-images.githubusercontent.com/67281829/145336656-c4b505cc-af33-41a8-8d33-2262656dd991.png)|![image](https://user-images.githubusercontent.com/67281829/145336682-fa547669-ede5-4822-87ec-e8c4eb69f950.png)|
+|![image](https://user-images.githubusercontent.com/67281829/145336714-097203df-b0f9-4558-8681-0cab7dfd7c8d.png)|![image](https://user-images.githubusercontent.com/67281829/145336730-1d6813d7-4e86-4bcf-b9cd-5268ed6c5ec6.png)|
+|![image](https://user-images.githubusercontent.com/67281829/145336754-e9f11ad4-da68-4e97-9b74-73f3b4de7d9b.png)|![image](https://user-images.githubusercontent.com/67281829/145336766-335623df-5e99-454c-8747-c9f7fa4e8958.png)|
+|![image](https://user-images.githubusercontent.com/67281829/145336791-a552dfc5-a76c-48fb-b524-07e7df609d46.png)|![image](https://user-images.githubusercontent.com/67281829/145336815-cf0753a3-d8dc-4186-a847-e329ea971c69.png)|
+|![image](https://user-images.githubusercontent.com/67281829/145336840-251722f3-f2b1-40dc-b1ce-d890cbcced0a.png)|![image](https://user-images.githubusercontent.com/67281829/145336856-93332517-4108-4cce-8033-700ebb0b653b.png)|
+|![image](https://user-images.githubusercontent.com/67281829/145336880-2be09461-eb7e-429d-86cf-6eb9eb072149.png)|![image](https://user-images.githubusercontent.com/67281829/145336901-62182a8e-6407-455e-9b10-0071c32ba984.png)|
+|![image](https://user-images.githubusercontent.com/67281829/145336927-f7e542ba-0de0-4ace-b934-09a3f016070b.png)|![image](https://user-images.githubusercontent.com/67281829/145338931-20d62548-b22d-4b9e-9bb6-9ec354a2c73c.png)|
+
+Above are the Screen shots of the varios exit counts before and after the disabling ept.
+
+### Answers
+
+1) What did you learn from the count of exits? Was the count what you expected? If not, why not?
+
+The number of exits with shadow paging mechanism are almost double than the values we got with nested paging. This is justifiable because the shadow paging architecture requires more exits to perform the task correctly 
+
+2) What changed between the two runs (ept vs no-ept)?
+
+The main difference that can be seen between the two runs is that the exit reasons 14 and 58 which initially had zero exit counts have exit counts of around 100000. Also the other exit resons that initially had some value have now increased. Overall shadow paging requires more number of exits to perform effectively.
+
 # Asssignment 2 CMPE 283
 
 ## Contributions
