@@ -19,7 +19,7 @@ and after results
 |![image](https://user-images.githubusercontent.com/67281829/145336791-a552dfc5-a76c-48fb-b524-07e7df609d46.png)|![image](https://user-images.githubusercontent.com/67281829/145336815-cf0753a3-d8dc-4186-a847-e329ea971c69.png)|
 |![image](https://user-images.githubusercontent.com/67281829/145336840-251722f3-f2b1-40dc-b1ce-d890cbcced0a.png)|![image](https://user-images.githubusercontent.com/67281829/145336856-93332517-4108-4cce-8033-700ebb0b653b.png)|
 |![image](https://user-images.githubusercontent.com/67281829/145336880-2be09461-eb7e-429d-86cf-6eb9eb072149.png)|![image](https://user-images.githubusercontent.com/67281829/145336901-62182a8e-6407-455e-9b10-0071c32ba984.png)|
-|![image](https://user-images.githubusercontent.com/67281829/145336927-f7e542ba-0de0-4ace-b934-09a3f016070b.png)|![image](https://user-images.githubusercontent.com/67281829/145338931-20d62548-b22d-4b9e-9bb6-9ec354a2c73c.png)|
+|![image](https://user-images.githubusercontent.com/67281829/145341774-22a23db8-696c-4613-ac09-63f72b9ce50b.png)|![image](https://user-images.githubusercontent.com/67281829/145341869-dd7519c7-7c04-4c24-858f-ef2b7346bb34.png)|
 
 Above are the Screen shots of the varios exit counts before and after the disabling ept.
 
